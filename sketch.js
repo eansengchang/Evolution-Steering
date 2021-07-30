@@ -7,6 +7,8 @@ let poisonCount = 200
 let vehicleCount = 200
 let pointRadius = 6
 
+let debug = false;
+
 function setup() {
     let cnv = createCanvas(windowWidth, windowHeight);
     cnv.style('display', 'block');
@@ -73,5 +75,17 @@ function draw() {
             vehicles.splice(i, 1);
             food.push(createVector(vehicle.position.x, vehicle.position.y))
         }
+    }
+}
+
+function keyPressed() {
+    if (keyCode === 32) {
+        debug = !debug;
+    } else if (keyCode === 49) {
+        vehicles.push(new Vehicle(mouseX, mouseY))
+    } else if (keyCode === 50) {
+        food.push(createVector(mouseX, mouseY))
+    } else if (keyCode === 51) {
+        poison.push(createVector(mouseX, mouseY))
     }
 }

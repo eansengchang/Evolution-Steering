@@ -15,7 +15,7 @@ function Vehicle(x, y, dna) {
 	this.badFoodHealth = -0.4
 
 	this.dna = [];
-	if(dna == undefined){
+	if (dna == undefined) {
 		//food weight
 		this.dna[0] = random(-2, 2);
 		//poison weight
@@ -27,19 +27,19 @@ function Vehicle(x, y, dna) {
 	} else {
 		//mutation
 		this.dna[0] = dna[0];
-		if(random(1) < mr){
+		if (random(1) < mr) {
 			this.dna[0] += random(-0.1, 0.1)
 		}
 		this.dna[1] = dna[1];
-		if(random(1) < mr){
+		if (random(1) < mr) {
 			this.dna[1] += random(-0.1, 0.1)
 		}
 		this.dna[2] = dna[2];
-		if(random(1) < mr){
+		if (random(1) < mr) {
 			this.dna[2] += random(-10, 10)
 		}
 		this.dna[3] = dna[3];
-		if(random(1) < mr){
+		if (random(1) < mr) {
 			this.dna[3] += random(-10, 10)
 		}
 	}
@@ -70,8 +70,8 @@ function Vehicle(x, y, dna) {
 		this.applyForce(steerB);
 	}
 
-	this.clone = function(){
-		if(random() < 0.001){
+	this.clone = function () {
+		if (random() < 0.001) {
 			return new Vehicle(this.position.x, this.position.y, this.dna)
 		} else {
 			return null;
@@ -128,16 +128,18 @@ function Vehicle(x, y, dna) {
 		translate(this.position.x, this.position.y);
 		rotate(angle);
 
-		// noFill()
-		// strokeWeight(3)
-		// stroke(0, 255, 0);
-		// line(0, 0, 0, -this.dna[0] * 20)
-		// ellipse(0, 0, this.dna[2] * 2)
+		if (debug) {
+			noFill()
+			strokeWeight(3)
+			stroke(0, 255, 0);
+			line(0, 0, 0, -this.dna[0] * 20)
+			ellipse(0, 0, this.dna[2] * 2)
 
-		// strokeWeight(2)
-		// stroke(255, 0, 0);
-		// line(0, 0, 0, -this.dna[1] * 20)
-		// ellipse(0, 0, this.dna[3] * 2)
+			strokeWeight(2)
+			stroke(255, 0, 0);
+			line(0, 0, 0, -this.dna[1] * 20)
+			ellipse(0, 0, this.dna[3] * 2)
+		}
 
 		let col = color(0, 255, 0, map(this.health, 0, 1, 0, 255))
 
