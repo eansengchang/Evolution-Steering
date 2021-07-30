@@ -87,5 +87,11 @@ function keyPressed() {
         food.push(createVector(mouseX, mouseY))
     } else if (keyCode === 51) {
         poison.push(createVector(mouseX, mouseY))
+    } else if (keyCode == 82){
+        for (let i = 0; i < foodCount; i++) {
+            let x = random(width);
+            let y = random(height)
+            food.push(createVector(x, y))
+        }
     }
 }
